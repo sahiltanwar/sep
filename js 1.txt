@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>REGISTRATION FORM</title>
+    <script>
+    function validate_form()
+    {
+        alert("hello");
+        if (document.login.rollno.value=="")
+        {
+            alert("roll no can't be blank");
+            document.login.rollno.focus();
+        }
+        else if(isNaN(document.login.rollno.value))
+        {
+            alert("roll no should be numeric");
+            document.login.rollno.focus();
+        }
+        else if (document.login.rollno.value.length!=7)
+        {
+            alert("roll no should be 7 digits");
+            document.login.rollno.focus();
+        }
+        if (document.login.name1.value=="")
+        {
+            alert("name can't be left blank");
+            document.login.name1.focus();
+        }
+        else if(!login.name1.value.match(/^[a-z A-Z]+$/))
+        {
+            alert("name must be alphabets");
+            login.name1.value="";
+            login.name1.focus();
+        }
+        if (document.login.dob.value=="")
+        {
+            alert("d.o.b. can't be blank ");
+            document.login.dob.focus();
+        }
+    }
+    </script>
+</head>
+<body>
+<b><u><font color=blue><h2> Student Registration form</h2></b></u>
+<form name="login">
+Rollno:<input type="text" name="rollno"><br><br> 
+Name:<input type="text" name="name1"><br><br> 
+dob:<input type="date" name="dob"><br><br>
+<input type="button" value="Register" onclick="validate_form()">
+</form>
+</body>
+</html>

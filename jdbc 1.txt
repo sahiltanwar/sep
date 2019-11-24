@@ -1,0 +1,127 @@
+package jdbc1;
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class JDBC1 {
+
+    public static void main(String[] args) {
+        Connection cn; Statement st;
+       
+        try{
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            cn = DriverManager.getConnection("jdbc:derby://localhost/DB1","Sahil","12345");
+            st = cn.createStatement();
+            ResultSet rs;
+            Scanner s1=new Scanner(System.in);
+            System.out.println("\t\tJDBC PROGRAM\n");
+        System.out.println("\t  1. Find total number of students  ");
+        System.out.println("\t  2. Print average marks for each subject input by user");
+        System.out.println("\t  3. Find the name of student getting highest marks");
+        System.out.println("\t  4. Find no of students getting first, second and third division. ");
+        System.out.println("\t  5. Find subject wise toppers ");
+        System.out.println("\t  6. Find the average marks ");
+        System.out.println("\t  7. Find the student getting second highest marks. ");
+        int x = s1.nextInt();
+        
+        switch(x)
+        {
+            case 1: String query = " select count(*) total from student";
+                    rs = st.executeQuery(query);
+                     rs.next();
+                        int tota =rs.getInt("total");
+                        System.out.println(tota);
+                        
+                    
+                break;
+            case 2:
+                        String sql="select avg(Eng) as Eng,avg(Maths) as Maths,avg(Hindi) as Hindi from student";
+                        rs=st.executeQuery(sql);
+                        rs.next();
+                        float e = rs.getFloat("Eng");
+                        float m = rs.getFloat("Maths");
+                        float h = rs.getFloat("Hindi");
+                        System.out.println("Average marks in English : "+e+"\nAverage Marks in Maths : "+m+"\nAverage marks in Hindi : "+h);
+                break;
+            case 3:
+                 /*   rs = stmt.executeQuery("Select max(marks),s.name as name from student s,result r where s.rollno=r.rollno");
+                        rs.next();
+                        String n=rs.getString("name");
+                        System.out.println("The student with highest marks is "+" "+n);
+						break;
+                    */
+                    break;
+            case 4:
+                    /*
+                    rs=stmt.executeQuery("select rollno,(SUM(marks)/300)*100 AS 'DIV' from result GROUP BY rollno");
+	                    while(rs.next())
+    	                {
+        	                if(rs.getInt("div")>90)
+            	            {
+                	            c1++;
+                    	    }
+							else if(rs.getInt("div")<90&&rs.getInt("div")>60)
+							{
+								c2++;
+							}
+							else if(rs.getInt("div")<60&&rs.getInt("div")>33)
+							{
+								c3++;
+							}
+							else
+							{
+								c4++;
+							}
+						}
+                        System.out.println(+c1);
+                        System.out.println(+c2);
+                        System.out.println(+c3);
+                        System.out.println(+c4);
+                */
+                    break;
+            case 5:
+                /* rs=stmt.executeQuery("select s.name as 'name',r.subject as 'sub',max(r.marks) from student s,result r where r.rollno=s.rollno group by subject");
+                        while(rs.next())
+                        {
+                            System.out.println("max marks in "+rs.getString("sub")+"is of "+rs.getString("name"));
+                        }*/
+                   break;
+            case 6:
+                   /* rs=stmt.executeQuery("select s.name as 'name',avg(r.marks) as 'avg' from student s, result r where s.rollno=r.rollno group by r.rollno");
+                        while(rs.next())
+                        {
+                            System.out.println("Average marks of "+rs.getString("name")+"are"+rs.getInt("avg"));
+			*/			
+                    break;
+            case 7:
+                /*rs=stmt.executeQuery("SELECT S.NAME,SUM(R.MARKS)) AS 'TOTA' FROM STUDENT S RESULT R WHERE R.ROLLNO=S.ROLLNO GROUP BY R.ROLLNO ORDER BY TOTA ");
+                        System.out.println(" second topeer"+rs.getString("name"));*/
+            break;
+            
+        }
+            //String query = "select * from student";
+            //int result = st.executeUpdate(query);
+            //System.out.println("Table Created successfully");
+            //ResultSet rs = st.executeQuery(query);
+           /* if(rs.next())
+            {
+                do{
+                    System.out.println(rs.getString("RollNo")+"\t"+rs.getString("Name")+"\t"+rs.getString("Eng")+"\t"+rs.getString("Maths")+"\t"+rs.getString("Hindi")+"\t"+rs.getString("Total"));
+                }while(rs.next());
+            }
+            else
+            {
+                System.out.println("No record found...");
+            }*/
+        }
+        catch(ClassNotFoundException e)
+        {
+            System.out.println("Unable to Load drive " + e);
+        }
+        catch(SQLException e)
+        {
+            System.out.println("Unable to connect" + e);
+        }
+    }
+    
+}

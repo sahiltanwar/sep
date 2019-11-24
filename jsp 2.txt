@@ -1,0 +1,55 @@
+-----------------------HTML
+<html>
+    <head>
+        <title>Prac 2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+        <form action="operate.jsp" method="GET">
+            Number1 : <input type="text" name="n1"><br>
+            Number2 : <input type="text" name="n2"><br>
+            <input type="radio" name="op" value="1"> ADDITION <br>
+            <input type="radio" name="op" value="2"> SUBTRACTION <br>
+            <input type="radio" name="op" value="3"> MULTIPLICATION <br>
+            <input type="submit"/>
+            
+        </form>
+    
+</html>
+--------------------------------------------------------
+
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <%
+int result=0;
+String s1=request.getParameter("n1");
+int n1=Integer.parseInt(s1);
+String s2=request.getParameter("n2");
+int n2=Integer.parseInt(s2);
+if(request.getParameter("op")!=null)
+    {
+        if(request.getParameter("op").equals("1"))
+        {
+            out.println(n1+n2);
+        }
+        else if(request.getParameter("op").equals("3"))
+        {
+            out.println(n1*n2);
+        }
+        else
+        {
+            out.println(n1-n2);
+        }
+    }
+%>
+    </body>
+</html>

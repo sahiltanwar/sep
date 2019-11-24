@@ -1,0 +1,28 @@
+
+--------------------------------------------HTML
+<html>
+    <head>
+        <title>Prac4</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method=post action="date.jsp">
+            Name:<input type=text name=username><br><br>
+            <input type=submit value="submit"> </form>
+    </body>
+</html>
+
+-------------------------------- ------------------
+<body>
+       <%Date time=new Date();%>
+<%out.println("Time : "+time.getHours()+"<br>");%>
+<% int hour=time.getHours();
+if(hour<12)
+out.println("Good Morning :" + request.getParameter("username")); 
+else if(hour<=17)
+out.println("Good Afternoon :" + request.getParameter("username")); 
+else
+out.println("Good Evening :" + request.getParameter("username"));
+%>
+    </body>

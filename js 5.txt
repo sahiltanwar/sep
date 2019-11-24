@@ -1,0 +1,31 @@
+<html>
+<body onLoad="f()">
+<form>
+<div>
+<h1 id="txt">SELFIE</h1>
+<input type = "button" value = "Click Me" onclick = "move();" />
+</div>
+<img id="myImage" src="pp.JFIF"/>
+<script>
+var i = 0;
+var t;
+function f(){
+var x = document.getElementById("txt");
+setTimeout(function(){x.style.color="red";},2000);
+}
+function init()
+{
+img = document.getElementById("myImage");
+img.style.position = "relative";
+img.style.left = (i)+"px";
+i+=10;
+}
+function move()
+{
+t = setInterval("init()",500);
+}  
+
+</script>
+</body>
+
+</html>

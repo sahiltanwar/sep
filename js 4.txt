@@ -1,0 +1,53 @@
+<html>
+<head><title>Stack</title></head>
+<body>
+<script>
+	var tos=-1;
+	var size = prompt("Enter Size of stack","");
+	var arr = new Array(size);
+	var n;
+	
+	do
+	{
+		n=prompt("Select operation:\n1.  Push\n2.  Pop","");
+		function push()
+		{
+			if(tos==size-1)
+			{
+				alert("Stack is Full");
+			}
+			else
+			{
+				var m = prompt("Enter an element : ","");
+				arr[++tos] = m;
+				confirm(m+" is pushed");
+			}
+		}
+		function pop()
+		{
+			if(tos==-1)
+			{
+				alert("Stack is Empty");
+			}
+			else
+			{
+				confirm(arr[tos]+" is popped");
+				return (arr[tos--]);	
+			}
+		}
+		if(n==1)
+		{
+			push();
+		}
+		else if(n==2)
+		{
+			pop();
+		}
+		else
+		{
+			alert("Wrong input");
+		}	
+}while(n==1 || n==2);
+</script>
+</body>
+</html>

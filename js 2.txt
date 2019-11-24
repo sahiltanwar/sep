@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title> user login </title>
+    <script>
+    function verify()
+    {
+        alert("Hello");
+        if(document.f.user.value=="" && document.f.pass1.value=="" )
+        {
+            alert("please enter username");
+            document.f.user.focus();
+            alert("please enter password");
+            document.f.pass1.focus();
+        }
+        if(document.f.user.value=="admin" && document.f.pass1.value=="1234")
+        {
+            alert("successfully logged in");
+            document.f.user.focus();
+            document.f.pass1.focus();
+        }
+        else
+        {
+            alert("invalid username or password");
+            alert("please try again");
+        }
+    }
+    </script>
+</head>
+<body>
+<b><u><font color=blue><h2>password protection</h2></font></u></b> 
+<form name="f">
+username:<input type="text" name="user" value=""><br><br> 
+password:<input type="password" name="pass1" value=""><br><br>
+<input type="reset" name="rst" value="RESET">
+<input type="button" name="SIGN_IN" value="sign in" onClick="verify()"><br><br>
+</form>
+</body>
+</html>

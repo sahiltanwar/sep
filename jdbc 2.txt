@@ -1,0 +1,25 @@
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class procedure
+{
+    public static void main(String args[])
+    {
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con =DriverManager.getConnection("jdbc:mysql://localhost:3306/ak","root","keshav");
+            CallableStatement cstmt= con.prepareCall("{call gettotal(?)}");
+            cstmt.registerOutParameter(1,java.sql.Types.NUMERIC);
+            cstmt.execute();
+            int tot=cstmt.getInt(1);
+            System.out.println("total number of students "+" "+tot);
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+}

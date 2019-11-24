@@ -1,0 +1,31 @@
+----------------------HTML
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <form action="index.jsp" method="GET">
+    Number:<input type="number" name="name" ><br/>
+    <input type="submit" value="print">
+</form>
+</html>
+
+--------------------------------------------------------------
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Pattern</title>
+</head>
+<body>
+<h2>Pattern </h2>
+ <%
+  int val=Integer.parseInt(request.getParameter("val"));
+ %>
+ <c:forEach var = "i" begin = "1" end = "${val}">
+      <c:forEach var = "j" begin = "&{i}" end = "&{val}">
+          <c:out value = "${j}" />
+       </c:forEach>
+       <br />
+  </c:forEach>
+</html>

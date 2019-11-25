@@ -35,3 +35,17 @@
 		</c:choose>
 	</body>
 </html>
+
+
+-----------------------------------tld
+
+<taglib>
+<tlib-version>1.0</tlib-version>
+<jsp-version>2.0</jsp-version>
+<short-name>simple</short-name>
+<uri>/WEB-INF/tlds/custom.tld</uri>
+<tag>
+<name>mydate</name>
+<tag-class>c3.mydate</tag-class>
+<body-content>empty</body-content>
+</taglib>
